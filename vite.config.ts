@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import viteCompression from 'vite-plugin-compression'
-import viteImagemin from 'vite-plugin-imagemin'
 import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import { visualizer } from "rollup-plugin-visualizer"
 import { resolve } from 'path'
@@ -63,34 +62,6 @@ export default defineConfig({
           css: "https://unpkg.com/element-plus/dist/index.css"
         }
       ]
-    }),
-    // image compress
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false
-      },
-      optipng: {
-        optimizationLevel: 7
-      },
-      mozjpeg: {
-        quality: 20
-      },
-      pngquant: {
-        quality: [0.8, 0.9],
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            name: "removeViewBox"
-          },
-          {
-            name: "removeEmptyAttrs",
-            active: false
-          }
-        ]
-      }
     }),
     // gzip compress
     viteCompression({
