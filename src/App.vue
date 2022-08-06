@@ -2,6 +2,9 @@
   <div>Hello wo-main</div>
    <el-button type="primary">Primary</el-button>
    <div class="box"></div>
+    <el-icon :size="40" color="skyblue">
+      <Edit />
+    </el-icon>
 </template>
 <script lang="ts" setup>
 
