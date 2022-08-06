@@ -1,0 +1,25 @@
+.error-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .error-img {
+        margin-right: 100px;
+    }
+    .error-detail {
+        h2 {
+            margin-bottom: 30px;
+            color: #444;
+            font-size: 60px;
+            font-weight: bold;
+        }
+        h4 {
+            color: #aaa;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .el-button {
+            width: 100px;
+        }
+    }
+}
