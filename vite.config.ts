@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import viteCompression from 'vite-plugin-compression'
 import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
-import { visualizer } from "rollup-plugin-visualizer"
+import { visualizer } from 'rollup-plugin-visualizer'
+import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
 // import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
@@ -12,31 +13,32 @@ import { resolve } from 'path'
 export default defineConfig({
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src")
-    }
+      '@': resolve(__dirname, 'src'),
+    },
   },
   // global css
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/var.scss";`
-      }
-    }
+        additionalData: `@import "@/styles/var.scss";`,
+      },
+    },
   },
   // server config
   server: {
-    host: "0.0.0.0", // 服务器主机名，如果允许外部访问，可设置为 "0.0.0.0"
+    host: '0.0.0.0', // 服务器主机名，如果允许外部访问，可设置为 "0.0.0.0"
     port: 8088, // 服务器端口号
     // https: false,
     open: true, // 是否自动打开浏览器
     // cors: true, // 是否允许跨域
-    proxy: { // 代理跨域
-      "/api": {
-        target: "http://192.168.1.113:6666", // 代理目标地址
+    proxy: {
+      // 代理跨域
+      '/api': {
+        target: 'http://192.168.1.113:6666', // 代理目标地址
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, "")
-      }
-    }
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   plugins: [
     vue(),
@@ -51,48 +53,49 @@ export default defineConfig({
     importToCDN({
       modules: [
         {
-          name: "vue",
-          var: "Vue",
-          path: "https://unpkg.com/vue@next"
+          name: 'vue',
+          var: 'Vue',
+          path: 'https://unpkg.com/vue@next',
         },
         {
-          name: "element-plus",
-          var: "ElementPlus",
-          path: "https://unpkg.com/element-plus",
-          css: "https://unpkg.com/element-plus/dist/index.css"
-        }
-      ]
+          name: 'element-plus',
+          var: 'ElementPlus',
+          path: 'https://unpkg.com/element-plus',
+          css: 'https://unpkg.com/element-plus/dist/index.css',
+        },
+      ],
     }),
     // gzip compress
     viteCompression({
       verbose: true,
       disable: false,
       threshold: 10240,
-      algorithm: "gzip",
-      ext: ".gz"
+      algorithm: 'gzip',
+      ext: '.gz',
     }),
     // 查看打包体积大小
-    visualizer()
+    visualizer(),
+    eslintPlugin(),
   ],
   // build configure
   build: {
-    outDir: "dist",
+    outDir: 'dist',
     // assetsDir: "assets",
-    minify: "terser",
+    minify: 'terser',
     terserOptions: {
       // delete console/debugger
       compress: {
         drop_console: true,
-        drop_debugger: true
-      }
+        drop_debugger: true,
+      },
     },
     rollupOptions: {
       output: {
         // Static resource classification and packaging
-        chunkFileNames: "assets/js/[name]-[hash].js",
-        entryFileNames: "assets/js/[name]-[hash].js",
-        assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
-      }
-    }
-  }
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+      },
+    },
+  },
 })
