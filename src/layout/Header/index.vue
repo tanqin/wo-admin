@@ -18,6 +18,8 @@ const isCollapse = computed((): boolean => menuStore.isCollapse)
 .header {
   display: flex;
   align-items: center;
+  height: 50px;
+  border-bottom: 1px solid #eee;
   .header-left {
     display: flex;
     font-size: 24px;

@@ -7,6 +7,7 @@
     <el-menu
       :default-active="activeMenu"
       :collapse="isCollapse"
+      :router="true"
       :unique-opened="true"
       :collapse-transition="false"
       background-color="#304156"
@@ -46,10 +47,12 @@ $logoHeight: 50px;
       object-fit: contain;
     }
     span {
-      color: #fff;
-      font-size: 20px;
-      font-weight: bold;
       margin-left: 10px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      // 文本不进行换行
+      white-space: nowrap;
     }
   }
   .el-menu {

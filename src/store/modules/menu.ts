@@ -7,7 +7,6 @@ export default defineStore('MenuStore', {
   getters: {},
   actions: {
     setCollapse() {
-      console.log(11)
       this.isCollapse = !this.isCollapse
     }
   },

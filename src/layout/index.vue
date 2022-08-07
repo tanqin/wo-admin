@@ -6,9 +6,10 @@
     <el-container>
       <el-header>
         <Header />
+        <Tabs />
       </el-header>
       <el-main>
-        <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component, route }">
           <transition appear name="fade-transform" mode="out-in">
             <section class="main-content">
               <keep-alive v-if="route.meta.keepAlive">
@@ -29,9 +30,7 @@
 import Menu from './Menu/index.vue'
 import Header from './Header/index.vue'
 import Footer from './Footer/index.vue'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
+import Tabs from './Tabs/index.vue'
 </script>
 <style lang="scss" scoped>
 .el-container {
@@ -40,8 +39,7 @@ const route = useRoute()
     width: auto;
   }
   .el-header {
-    display: flex;
-    align-content: center;
+    height: auto;
   }
   .el-main {
     background-color: #f0f3f7ec;

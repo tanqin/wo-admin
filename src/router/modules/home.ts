@@ -3,14 +3,13 @@ import { RouteRecordRaw } from 'vue-router'
 // 首页模块的路由
 const homeRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/home',
+    path: 'home',
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue'),
     meta: {
       keepAlive: true,
       requireAuth: true,
-      parentTitle: '首页',
-      title: '',
+      title: '首页',
       key: 'home'
     }
   }

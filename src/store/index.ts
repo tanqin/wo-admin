@@ -1,3 +1,4 @@
 import MenuStore from './modules/menu'
+import TabsStore from './modules/tabs'
 
-export { MenuStore }
+export { MenuStore, TabsStore }
