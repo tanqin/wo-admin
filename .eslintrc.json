@@ -30,6 +30,7 @@
             "{}": false // 忽略 {} 检测规则
           }
         }
-      ]
+      ],
+      "no-undef": ["off", { "typeof": true }]
     }
 }

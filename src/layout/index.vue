@@ -1,7 +1,65 @@
-<template
-  ><div class="layout">
-    <router-view />
-  </div>
+<template>
+  <el-container>
+    <el-aside>
+      <Menu />
+    </el-aside>
+    <el-container>
+      <el-header>
+        <Header />
+      </el-header>
+      <el-main>
+        <router-view v-slot="{ Component }">
+          <transition appear name="fade-transform" mode="out-in">
+            <section class="main-content">
+              <keep-alive v-if="route.meta.keepAlive">
+                <component :is="Component" :key="route.path" />
+              </keep-alive>
+              <component v-else :is="Component" :key="route.path" />
+            </section>
+          </transition>
+        </router-view>
+      </el-main>
+      <el-footer>
+        <Footer />
+      </el-footer>
+    </el-container>
+  </el-container>
 </template>
-<script lang="ts" setup></script>
-<style lang="scss" scoped></style>
+<script lang="ts" setup>
+import Menu from './Menu/index.vue'
+import Header from './Header/index.vue'
+import Footer from './Footer/index.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+</script>
+<style lang="scss" scoped>
+.el-container {
+  height: 100vh;
+  .el-aside {
+    width: auto;
+  }
+  .el-header {
+    display: flex;
+    align-content: center;
+  }
+  .el-main {
+    background-color: #f0f3f7ec;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    .main-content {
+      box-sizing: border-box;
+      overflow: auto;
+      height: 100%;
+      background-color: #fff;
+      padding: 14px;
+      border-radius: 10px;
+    }
+  }
+
+  .el-footer {
+    height: auto;
+  }
+}
+</style>
