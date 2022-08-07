@@ -16,17 +16,23 @@
 </template>
 <script lang="ts" setup>
 import LoginForm from './components/LoginForm.vue'
-import { ILoginForm } from '@/model/login'
+import { ILoginForm } from '@/views/login/types/index'
 import { reactive } from 'vue'
+import { ElMessage } from 'element-plus'
+import router from '@/router'
 
 const loginForm = reactive<ILoginForm>({
-  username: 'admin',
-  password: '123456'
+  username: '',
+  password: ''
 })
 
 // 登录
-const handleLogin = (form: ILoginForm) => {
-  console.log(form)
+const handleLogin = (form: ILoginForm, callback: FunctionConstructor) => {
+  setTimeout(() => {
+    ElMessage.success(`登录成功，${form.username}，欢迎您！`)
+    router.push({ name: 'home' })
+    callback('success')
+  }, 800)
 }
 </script>
 <style lang="scss" scoped>
@@ -41,7 +47,7 @@ const handleLogin = (form: ILoginForm) => {
     align-items: center;
     height: 100%;
     border-radius: 20px;
-    background-color: rgb(252 252 252);
+    background-color: rgba(252, 252, 252, 0.8);
     .login-left {
       width: 900px;
       img {
@@ -51,11 +57,20 @@ const handleLogin = (form: ILoginForm) => {
     }
     .login-form {
       width: 480px;
-      height: 240px;
+      height: 270px;
       border-radius: 15px;
       padding: 30px;
-      background-color: #fff;
       box-shadow: 3px 3px 8px 1px #00000038;
+      :deep(.el-form-item) {
+        text-align: center;
+        margin-bottom: 30px;
+        .el-form-item__content {
+          justify-content: center;
+          .el-button {
+            width: 200px;
+          }
+        }
+      }
       .login-logo {
         text-align: center;
         margin-bottom: 30px;

@@ -1,5 +1,6 @@
 import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
 import errorRoutes from './modules/error'
+import homeRoutes from './modules/home'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -15,6 +16,18 @@ const routes: RouteRecordRaw[] = [
       title: '登录页',
       key: 'login'
     }
+  },
+  {
+    path: '/layout',
+    name: 'layout',
+    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
+    meta: {
+      requireAuth: true,
+      title: '布局页',
+      key: 'layout'
+    },
+    redirect: { name: 'home' },
+    children: [...homeRoutes]
   },
   ...errorRoutes,
   {
