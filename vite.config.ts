@@ -13,16 +13,16 @@ import { resolve } from 'path'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-    },
+      '@': resolve(__dirname, 'src')
+    }
   },
   // global css
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/var.scss";`,
-      },
-    },
+        additionalData: `@import "@/styles/var.scss";`
+      }
+    }
   },
   // server config
   server: {
@@ -36,9 +36,9 @@ export default defineConfig({
       '/api': {
         target: 'http://192.168.1.113:6666', // 代理目标地址
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
   plugins: [
     vue(),
@@ -55,15 +55,15 @@ export default defineConfig({
         {
           name: 'vue',
           var: 'Vue',
-          path: 'https://unpkg.com/vue@next',
+          path: 'https://unpkg.com/vue@next'
         },
         {
           name: 'element-plus',
           var: 'ElementPlus',
           path: 'https://unpkg.com/element-plus',
-          css: 'https://unpkg.com/element-plus/dist/index.css',
-        },
-      ],
+          css: 'https://unpkg.com/element-plus/dist/index.css'
+        }
+      ]
     }),
     // gzip compress
     viteCompression({
@@ -71,11 +71,11 @@ export default defineConfig({
       disable: false,
       threshold: 10240,
       algorithm: 'gzip',
-      ext: '.gz',
+      ext: '.gz'
     }),
     // 查看打包体积大小
     visualizer(),
-    eslintPlugin(),
+    eslintPlugin()
   ],
   // build configure
   build: {
@@ -86,16 +86,16 @@ export default defineConfig({
       // delete console/debugger
       compress: {
         drop_console: true,
-        drop_debugger: true,
-      },
+        drop_debugger: true
+      }
     },
     rollupOptions: {
       output: {
         // Static resource classification and packaging
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-      },
-    },
-  },
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
+      }
+    }
+  }
 })

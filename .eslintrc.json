@@ -21,6 +21,15 @@
     ],
     "rules": {
        "no-alert": "error", // 存在 alert 时 - 报错
-       "vue/multi-word-component-names": ["off"] // 组件名必须由多个单词组成 - 关闭
+       "vue/multi-word-component-names": ["off"], // 组件名必须由多个单词组成 - 关闭
+       "@typescript-eslint/ban-types": [
+        "error",
+        {
+          "extendDefaults": true,
+          "types": {
+            "{}": false // 忽略 {} 检测规则
+          }
+        }
+      ]
     }
 }
