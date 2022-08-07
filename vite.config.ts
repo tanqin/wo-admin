@@ -55,13 +55,13 @@ export default defineConfig({
         {
           name: 'vue',
           var: 'Vue',
-          path: 'https://unpkg.com/vue@next'
+          path: 'https://cdn.jsdelivr.net/npm/vue@next'
         },
         {
           name: 'element-plus',
           var: 'ElementPlus',
-          path: 'https://unpkg.com/element-plus',
-          css: 'https://unpkg.com/element-plus/dist/index.css'
+          path: 'https://cdn.jsdelivr.net/npm/element-plus',
+          css: 'https://cdn.jsdelivr.net/npm/element-plus/dist/index.css'
         }
       ]
     }),

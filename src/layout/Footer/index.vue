@@ -1,6 +1,6 @@
 <template>
   <div class="footer flx-center">
-    <a href="http://wwww.baidu.com">2022 © wo-admin By tanqin</a>
+    <a href="http://wwww.baidu.com" target="_blank">2022 © wo-admin By tanqin</a>
   </div>
 </template>
 <script lang="ts" setup></script>

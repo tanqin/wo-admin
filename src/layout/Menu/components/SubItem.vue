@@ -13,11 +13,20 @@
       <el-icon>
         <component :is="item.icon" />
       </el-icon>
-      <template #title>{{ item.title }}</template>
+      <template #title>
+        <a class="href" v-if="item.isLink" :href="item.isLink" target="_blank">{{ item.title }}</a>
+        <span v-else>{{ item.title }}</span>
+      </template>
     </el-menu-item>
   </template>
 </template>
 <script lang="ts" setup>
 defineProps<{ menuList: Menu.MenuOptions[] }>()
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.href {
+  display: inline-block;
+  text-decoration: none;
+  color: $textColor;
+}
+</style>

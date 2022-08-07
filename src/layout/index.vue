@@ -11,7 +11,7 @@
       <el-main>
         <router-view v-slot="{ Component, route }">
           <transition appear name="fade-transform" mode="out-in">
-            <section class="main-content">
+            <section class="main-content" :key="route.path">
               <keep-alive v-if="route.meta.keepAlive">
                 <component :is="Component" :key="route.path" />
               </keep-alive>

@@ -19,15 +19,16 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import SubItem from './components/SubItem.vue'
 import menuListJson from './json/menu.json'
 import { MenuStore } from '@/store/index'
 
 const menuStore = MenuStore()
+menuStore.setMenuList(menuListJson)
 const isCollapse = computed((): boolean => menuStore.isCollapse)
-const menuList = reactive<Menu.MenuOptions[]>(menuListJson)
+const menuList = computed((): Menu.MenuOptions[] => menuStore.menuList)
 const route = useRoute()
 const activeMenu = computed((): string => route.path)
 </script>
