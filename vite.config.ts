@@ -1,7 +1,9 @@
+// 配置参考: https://juejin.cn/post/7028137821269393438
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import viteCompression from 'vite-plugin-compression'
 import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
+import { manualChunksPlugin } from 'vite-plugin-webpackchunkname'
 import { visualizer } from 'rollup-plugin-visualizer'
 import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
@@ -75,12 +77,12 @@ export default defineConfig({
     }),
     // 查看打包体积大小
     visualizer(),
-    eslintPlugin()
+    eslintPlugin(),
+    manualChunksPlugin()
   ],
   // build configure
   build: {
     outDir: 'dist',
-    // assetsDir: "assets",
     minify: 'terser',
     terserOptions: {
       // delete console/debugger
