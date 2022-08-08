@@ -2,7 +2,7 @@ import piniaPersist from '@/config/piniaPersist'
 import router from '@/router'
 import { defineStore } from 'pinia'
 
-const whiteList = ['/403', '/404', '/500', '/layout', '/login']
+const whiteList = ['/403', '/404', '/500', '/layout', '/login', '/layout/refresh']
 let isExist = false
 
 interface TabsState {

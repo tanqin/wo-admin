@@ -23,6 +23,9 @@
         </template>
       </el-tab-pane>
     </el-tabs>
+    <el-button size="small" class="refresh-btn">
+      <span @click="handleRefresh">刷新</span><el-icon class="el-icon--right"><Refresh /></el-icon>
+    </el-button>
     <el-dropdown trigger="click">
       <el-button type="primary" size="small">
         <span>更多</span><el-icon class="el-icon--right"><ArrowDown /></el-icon>
@@ -100,6 +103,11 @@ const handleCloseAll = () => {
   tabsStore.closeMultipleTab()
   tabsStore.goHome()
 }
+
+// 刷新页面
+const handleRefresh = () => {
+  router.push({ name: 'refresh' })
+}
 </script>
 <style lang="scss" scoped>
 .tabs {
@@ -119,6 +127,9 @@ const handleCloseAll = () => {
         }
       }
     }
+  }
+  .refresh-btn {
+    margin-right: 15px;
   }
 }
 </style>

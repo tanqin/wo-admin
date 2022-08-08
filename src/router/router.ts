@@ -1,7 +1,8 @@
 import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
 import errorRoutes from './modules/error'
 import homeRoutes from './modules/home'
-import dataScreen from './modules/dataScreen'
+import dataScreenRoutes from './modules/dataScreen'
+import refreshRoutes from './modules/refresh'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -28,7 +29,7 @@ const routes: RouteRecordRaw[] = [
       key: 'layout'
     },
     redirect: { name: 'home' },
-    children: [...homeRoutes, ...dataScreen]
+    children: [...homeRoutes, ...dataScreenRoutes, ...refreshRoutes]
   },
   ...errorRoutes,
   {
