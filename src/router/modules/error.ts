@@ -5,28 +5,34 @@ const errorRoutes: Array<RouteRecordRaw> = [
   {
     path: '/403',
     name: '403',
-    component: () => import(/* webpackChunkName: "403" */ '@/components/ErrorMessage/403.vue'),
+    component: () => import(/* webpackChunkName: "error" */ '@/components/ErrorMessage/index.vue'),
     meta: {
       requireAuth: true,
-      title: '403页面'
+      title: '403页面',
+      key: '403',
+      msg: '抱歉，您无权访问该页面'
     }
   },
   {
     path: '/404',
     name: '404',
-    component: () => import(/* webpackChunkName: "404" */ '@/components/ErrorMessage/404.vue'),
+    component: () => import(/* webpackChunkName: "error" */ '@/components/ErrorMessage/index.vue'),
     meta: {
       requireAuth: false,
-      title: '404页面'
+      title: '404页面',
+      key: '404',
+      msg: '抱歉，您访问的页面不存在'
     }
   },
   {
     path: '/500',
     name: '500',
-    component: () => import(/* webpackChunkName: "500" */ '@/components/ErrorMessage/500.vue'),
+    component: () => import(/* webpackChunkName: "error" */ '@/components/ErrorMessage/index.vue'),
     meta: {
       requireAuth: false,
-      title: '500页面'
+      title: '500页面',
+      key: '500',
+      msg: '抱歉，服务器出错了'
     }
   }
 ]
