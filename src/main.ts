@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import '@/styles/index.scss'
+import '@/assets/iconfont/iconfont.css'
 import ElementPlus from 'element-plus'
 // element css(如果使用了 CDN，不需要引入css)
 // import "element-plus/dist/index.css"

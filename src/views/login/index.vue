@@ -22,8 +22,8 @@ import { ElMessage } from 'element-plus'
 import router from '@/router'
 
 const loginForm = reactive<ILoginForm>({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 })
 
 // 登录
@@ -67,22 +67,25 @@ const handleLogin = (form: ILoginForm, callback: FunctionConstructor) => {
         .el-form-item__content {
           justify-content: center;
           .el-button {
-            width: 200px;
+            width: 40%;
           }
         }
       }
       .login-logo {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-bottom: 30px;
         img {
-          width: 50px;
-          height: 40px;
+          width: 58px;
+          height: 52px;
           margin-right: 20px;
         }
         .logo-text {
           display: inline-block;
           font-size: 45px;
           font-weight: bold;
+          white-space: nowrap;
         }
       }
     }
