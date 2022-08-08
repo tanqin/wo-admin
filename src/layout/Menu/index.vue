@@ -28,7 +28,7 @@ import { MenuStore } from '@/store/index'
 const menuStore = MenuStore()
 menuStore.setMenuList(menuListJson)
 const isCollapse = computed((): boolean => menuStore.isCollapse)
-const menuList = computed((): Menu.MenuOptions[] => menuStore.menuList)
+const menuList = computed((): globalThis.Menu.MenuOptions[] => menuStore.menuList)
 const route = useRoute()
 const activeMenu = computed((): string => route.path)
 </script>

@@ -21,7 +21,7 @@
   </template>
 </template>
 <script lang="ts" setup>
-defineProps<{ menuList: Menu.MenuOptions[] }>()
+defineProps<{ menuList: globalThis.Menu.MenuOptions[] }>()
 </script>
 <style lang="scss" scoped>
 .href {
