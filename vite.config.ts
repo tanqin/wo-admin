@@ -7,6 +7,7 @@ import { manualChunksPlugin } from 'vite-plugin-webpackchunkname'
 import { visualizer } from 'rollup-plugin-visualizer'
 import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
+import externalGlobals from 'rollup-plugin-external-globals'
 // import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
 // import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -54,17 +55,17 @@ export default defineConfig({
     // cdn 引入 (vue、element-plus)
     importToCDN({
       modules: [
-        {
-          name: 'vue',
-          var: 'Vue',
-          path: 'https://cdn.jsdelivr.net/npm/vue@next'
-        },
-        {
-          name: 'element-plus',
-          var: 'ElementPlus',
-          path: 'https://cdn.jsdelivr.net/npm/element-plus',
-          css: 'https://cdn.jsdelivr.net/npm/element-plus/dist/index.css'
-        }
+        // {
+        //   name: 'vue',
+        //   var: 'Vue',
+        //   path: 'https://cdn.jsdelivr.net/npm/vue@next'
+        // },
+        // {
+        //   name: 'element-plus',
+        //   var: 'ElementPlus',
+        //   path: 'https://cdn.jsdelivr.net/npm/element-plus',
+        //   css: 'https://cdn.jsdelivr.net/npm/element-plus/dist/index.css'
+        // }
       ]
     }),
     // gzip compress
@@ -92,6 +93,12 @@ export default defineConfig({
       }
     },
     rollupOptions: {
+      plugins: [
+        externalGlobals({
+          vue: 'Vue',
+          'element-plus': 'ElementPlus'
+        })
+      ],
       output: {
         // Static resource classification and packaging
         chunkFileNames: 'assets/js/[name]-[hash].js',

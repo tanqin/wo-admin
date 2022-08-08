@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build:dev": "vue-tsc --noEmit && vite build --mode development",
+    "build:pro": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.3.0",
     "prettier": "^2.7.1",
+    "rollup-plugin-external-globals": "^0.6.1",
     "rollup-plugin-visualizer": "^5.7.1",
     "sass": "^1.54.3",
     "sass-loader": "^10.2.1",
