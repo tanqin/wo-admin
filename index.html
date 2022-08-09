@@ -8,14 +8,113 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37"></script>
     <script src="https://cdn.jsdelivr.net/npm/element-plus@2.2.12"></script>
     <title>wo-admin</title>
-    <style>
+    <style type="text/css">
       body {
         overflow: hidden;
       }
+      /* 加载动画 */
+    .first-loading-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+    }
+
+    .first-loading-wrap .loading-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+    }
+
+    .dot {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      transform: rotate(45deg); 
+      animation: animation-rotate 1.2s infinite linear;
+    }
+
+    .dot i {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background-color: rgb(64, 158, 255);
+      border-radius: 50%;
+      opacity: 0.3;
+      transform: scale(0.75);
+      transform-origin: 50% 50%;
+      animation: animation-spin-move 1s infinite linear alternate;
+    }
+
+    .dot i:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+
+    .dot i:nth-child(2) {
+      top: 0;
+      right: 0;
+      -webkit-animation-delay: 0.4s;
+      animation-delay: 0.4s;
+    }
+
+    .dot i:nth-child(3) {
+      right: 0;
+      bottom: 0;
+      -webkit-animation-delay: 0.8s;
+      animation-delay: 0.8s;
+    }
+
+    .dot i:nth-child(4) {
+      bottom: 0;
+      left: 0;
+      -webkit-animation-delay: 1.2s;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes animation-rotate {
+      to {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg);
+      }
+    }
+
+    @-webkit-keyframes animation-rotate {
+      to {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg);
+      }
+    }
+
+    @keyframes animation-spin-move {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes animation-spin-move {
+      to {
+        opacity: 1;
+      }
+    }
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="first-loading-wrap">
+        <div class="loading-wrap">
+          <span class="dot">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+        </div>
+        <h2>拼命加载中...</h2>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
