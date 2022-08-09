@@ -43,7 +43,7 @@ import Tabs from './Tabs/index.vue'
   }
 
   .el-main {
-    background-color: #eee;
+    background-color: #f1f2f6;
     padding: 15px;
     box-sizing: border-box;
     overflow-x: hidden;

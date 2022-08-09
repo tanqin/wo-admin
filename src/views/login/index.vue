@@ -4,12 +4,14 @@
       <div class="login-left">
         <img src="@/assets/images/login_left.svg" alt="login" />
       </div>
-      <div class="login-form">
-        <div class="login-logo">
-          <img src="@/assets/images/logo.svg" alt="logo" />
-          <p class="logo-text">wo-admin</p>
+      <div class="login-right">
+        <div class="login-form">
+          <div class="login-logo">
+            <img src="@/assets/images/logo.svg" alt="logo" />
+            <p class="logo-text">wo-admin</p>
+          </div>
+          <LoginForm :data="loginForm" @login="handleLogin"></LoginForm>
         </div>
-        <LoginForm :data="loginForm" @login="handleLogin"></LoginForm>
       </div>
     </div>
   </div>
@@ -40,52 +42,58 @@ const handleLogin = (form: ILoginForm, callback: FunctionConstructor) => {
   box-sizing: border-box;
   height: 100vh;
   padding: 20px;
-  background: center/100% #eee url('@/assets/images/login_bg.svg');
+  background: center/100% #f1f2f6 url('@/assets/images/login_bg.svg');
   .login-content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     border-radius: 20px;
-    background-color: rgba(252, 252, 252, 0.8);
+    background-color: rgba(254, 254, 254, 0.7);
     .login-left {
-      width: 900px;
+      flex: 1;
       img {
         width: 100%;
         height: 100%;
       }
     }
-    .login-form {
-      width: 480px;
-      height: 270px;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 3px 3px 8px 1px #00000038;
-      :deep(.el-form-item) {
-        text-align: center;
-        margin-bottom: 30px;
-        .el-form-item__content {
-          justify-content: center;
-          .el-button {
-            width: 40%;
+    .login-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      .login-form {
+        width: 480px;
+        height: 270px;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 3px 3px 8px 1px #00000038;
+        :deep(.el-form-item) {
+          text-align: center;
+          margin-bottom: 30px;
+          .el-form-item__content {
+            justify-content: center;
+            .el-button {
+              width: 40%;
+            }
           }
         }
-      }
-      .login-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 30px;
-        img {
-          width: 58px;
-          height: 52px;
-          margin-right: 20px;
-        }
-        .logo-text {
-          display: inline-block;
-          font-size: 45px;
-          font-weight: bold;
-          white-space: nowrap;
+        .login-logo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 30px;
+          img {
+            width: 58px;
+            height: 52px;
+            margin-right: 20px;
+          }
+          .logo-text {
+            display: inline-block;
+            font-size: 45px;
+            font-weight: bold;
+            white-space: nowrap;
+          }
         }
       }
     }

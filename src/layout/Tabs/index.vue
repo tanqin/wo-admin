@@ -23,8 +23,8 @@
         </template>
       </el-tab-pane>
     </el-tabs>
-    <el-button size="small" class="refresh-btn">
-      <span @click="handleRefresh">刷新</span><el-icon class="el-icon--right"><Refresh /></el-icon>
+    <el-button size="small" class="refresh-btn" @click="handleRefresh">
+      <span>刷新</span><el-icon class="el-icon--right"><Refresh /></el-icon>
     </el-button>
     <el-dropdown trigger="click">
       <el-button type="primary" size="small">

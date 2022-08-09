@@ -48,11 +48,11 @@
       <el-dropdown size="large" trigger="click">
         <div class="user">
           <img class="avatar" src="@/assets/images/avatar.svg" alt="avatar" />
-          <span class="username">wo-admin</span>
+          <div class="greeting"> <span class="username">wo-admin</span> , 欢迎您</div>
           <el-icon><CaretBottom /></el-icon>
         </div>
         <template #dropdown>
-          <el-dropdown-menu>
+          <el-dropdown-menu placement="bottom-end">
             <el-dropdown-item :icon="UserFilled" @click="handleOpenDialog('personalRef')"
               >个人中心</el-dropdown-item
             >
@@ -165,6 +165,19 @@ const handleLogout = async () => {
           height: 34px;
           border-radius: 50%;
           margin-right: 10px;
+        }
+        .greeting {
+          width: 1750x;
+          font-size: 16px;
+          margin-right: 5px;
+
+          .username {
+            display: inline-block;
+            max-width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
       }
     }
