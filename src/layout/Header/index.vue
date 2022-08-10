@@ -4,64 +4,32 @@
       <el-icon class="collapse-icon" @click="menuStore.setCollapse">
         <component :is="isCollapse ? 'expand' : 'fold'" />
       </el-icon>
-      <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item :to="{ name: 'home' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/layout/dataScreen' }">数据大屏</el-breadcrumb-item>
-        <el-breadcrumb-item>其它</el-breadcrumb-item>
-      </el-breadcrumb>
+
+      <Breadcrumb />
     </div>
     <div class="header-right">
-      <el-tooltip effect="dark" content="全屏" placement="bottom">
-        <i
-          :class="['iconfont', 'full-screen-icon', fullScreen ? 'icon-fangda' : 'icon-suoxiao']"
-          @click="handleFullScreen"
-        ></i>
-      </el-tooltip>
-      <el-dropdown trigger="click">
-        <span
-          ><el-tooltip effect="dark" content="语言" placement="bottom">
-            <i class="iconfont icon-language"></i> </el-tooltip
-        ></span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item disabled>简体中文</el-dropdown-item>
-            <el-dropdown-item>繁体中文</el-dropdown-item>
-            <el-dropdown-item>English</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-
-      <el-dropdown trigger="click">
-        <span>
-          <el-tooltip effect="dark" content="布局大小" placement="bottom">
-            <i class="iconfont icon-font-size"></i>
-          </el-tooltip>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>large</el-dropdown-item>
-            <el-dropdown-item disabled>default</el-dropdown-item>
-            <el-dropdown-item>small</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <FullScreen />
+      <Lang />
+      <LayoutSize />
       <el-dropdown size="large" trigger="click">
         <div class="user">
           <img class="avatar" src="@/assets/images/avatar.svg" alt="avatar" />
-          <div class="greeting"> <span class="username">wo-admin</span> , 欢迎您</div>
+          <div class="greeting">
+            <span class="username">wo-admin</span> , {{ $t('header.welcome') }}</div
+          >
           <el-icon><CaretBottom /></el-icon>
         </div>
         <template #dropdown>
           <el-dropdown-menu placement="bottom-end">
-            <el-dropdown-item :icon="UserFilled" @click="handleOpenDialog('personalRef')"
-              >个人中心</el-dropdown-item
-            >
-            <el-dropdown-item :icon="Key" @click="handleOpenDialog('passwordRef')"
-              >修改密码</el-dropdown-item
-            >
-            <el-dropdown-item :icon="SwitchButton" divided @click="handleLogout"
-              >退出登录</el-dropdown-item
-            >
+            <el-dropdown-item :icon="UserFilled" @click="handleOpenDialog('personalRef')">{{
+              $t('header.profile')
+            }}</el-dropdown-item>
+            <el-dropdown-item :icon="Key" @click="handleOpenDialog('passwordRef')">{{
+              $t('header.changePassword')
+            }}</el-dropdown-item>
+            <el-dropdown-item :icon="SwitchButton" divided @click="handleLogout">{{
+              $t('header.logout')
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -73,28 +41,21 @@
 <script lang="ts" setup>
 import { MenuStore } from '@/store/index'
 import { computed, ref } from 'vue'
-import { ArrowRight, UserFilled, Key, SwitchButton, CaretBottom } from '@element-plus/icons-vue'
+import { UserFilled, Key, SwitchButton, CaretBottom } from '@element-plus/icons-vue'
 import PersonalDialog from './components/PersonalDialog.vue'
 import { ElMessageBox } from 'element-plus'
-import router from '@/router'
 import PasswordDialog from './components/PasswordDialog.vue'
+import { useRouter } from 'vue-router'
+import Breadcrumb from './components/Breadcrumb.vue'
+import FullScreen from './components/FullScreen.vue'
+import Lang from './components/Lang.vue'
+import LayoutSize from './components/LayoutSize.vue'
 
 const menuStore = MenuStore()
 const isCollapse = computed((): boolean => menuStore.isCollapse)
-const fullScreen = ref<boolean>(false)
 const personalDialogVisible = ref<boolean>(false)
 const passwordDialogVisible = ref<boolean>(false)
-
-// 全屏切换
-const handleFullScreen = () => {
-  fullScreen.value = Boolean(document.fullscreenElement)
-
-  if (fullScreen.value) {
-    document.exitFullscreen?.()
-  } else {
-    document.body.requestFullscreen?.()
-  }
-}
+const router = useRouter()
 
 // 打开弹窗
 const handleOpenDialog = (refName: string) => {
@@ -102,7 +63,6 @@ const handleOpenDialog = (refName: string) => {
     case 'personalRef':
       personalDialogVisible.value = true
       break
-
     case 'passwordRef':
       passwordDialogVisible.value = true
       break
@@ -143,7 +103,7 @@ const handleLogout = async () => {
     display: flex;
     align-items: center;
     color: $themeColor;
-    .iconfont {
+    :deep(.iconfont) {
       cursor: pointer;
       font-size: 22px;
       &.full-screen-icon {
@@ -151,7 +111,7 @@ const handleLogout = async () => {
       }
     }
 
-    .el-dropdown {
+    :deep(.el-dropdown) {
       margin-left: 15px;
       .user {
         display: flex;

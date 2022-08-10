@@ -5,7 +5,7 @@
         <el-icon>
           <component :is="item.icon" />
         </el-icon>
-        <span>{{ item.title }}</span>
+        <span>{{ $t(item.title) }}</span>
       </template>
       <SubItem :menuList="item.children" />
     </el-sub-menu>
@@ -14,8 +14,10 @@
         <component :is="item.icon" />
       </el-icon>
       <template #title>
-        <a class="href" v-if="item.isLink" :href="item.isLink" target="_blank">{{ item.title }}</a>
-        <span v-else>{{ item.title }}</span>
+        <a class="href" v-if="item.isLink" :href="item.isLink" target="_blank">{{
+          $t(item.title)
+        }}</a>
+        <span v-else>{{ $t(item.title) }}</span>
       </template>
     </el-menu-item>
   </template>

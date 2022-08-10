@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 
-// 首页模块的路由
+// 数据大屏模块的路由
 const dataScreenRoutes: Array<RouteRecordRaw> = [
   {
     path: 'dataScreen',
@@ -8,7 +8,7 @@ const dataScreenRoutes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "dataScreen" */ '@/views/dataScreen/index.vue'),
     meta: {
       requireAuth: false,
-      title: '数据大屏',
+      title: 'route.dataScreen',
       key: 'dataScreen'
     }
   }

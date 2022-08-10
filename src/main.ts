@@ -9,6 +9,7 @@ import * as Icons from '@element-plus/icons-vue'
 import router from '@/router/index'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
+import i18n from './lang'
 
 const app = createApp(App)
 
@@ -20,4 +21,4 @@ Object.keys(Icons).forEach((key) => {
 const pinia = createPinia()
 pinia.use(piniaPersist)
 
-app.use(router).use(ElementPlus).use(pinia).mount('#app')
+app.use(router).use(ElementPlus).use(pinia).use(i18n).mount('#app')

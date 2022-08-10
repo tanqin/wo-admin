@@ -17,7 +17,7 @@ export default defineStore({
     tabsMenuList: [
       {
         path: '/layout/home',
-        title: '首页',
+        title: 'route.home',
         icon: 'HomeFilled',
         close: false
       }

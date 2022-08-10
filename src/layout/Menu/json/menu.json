@@ -2,13 +2,13 @@
     {
       "id": "1",
       "icon": "home-filled",
-      "title": "首页",
+      "title": "route.home",
       "path": "/layout/home"
     },
     {
       "id": "2",
       "icon": "histogram",
-      "title": "数据大屏",
+      "title": "route.dataScreen", 
       "path": "/layout/dataScreen"
     },
     {
@@ -40,7 +40,7 @@
     {
       "id": "10",
       "icon": "paperclip",
-      "title": "外部链接",
+      "title": "外链",
       "path": "/link",
       "isLink": "http://www.baidu.com"
     }

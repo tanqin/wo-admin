@@ -9,7 +9,7 @@ const homeRoutes: Array<RouteRecordRaw> = [
     meta: {
       keepAlive: true,
       requireAuth: true,
-      title: '首页',
+      title: 'route.home',
       key: 'home'
     }
   }

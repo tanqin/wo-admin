@@ -9,7 +9,6 @@
       <el-tab-pane
         v-for="item in tabsMenuList"
         :key="item.path"
-        :label="item.title"
         :name="item.path"
         :closable="item.close"
       >
@@ -18,26 +17,13 @@
             ><el-icon v-if="item.icon">
               <component :is="item.icon"></component>
             </el-icon>
-            {{ item.title }}</span
+            {{ $t(item.title) }}</span
           >
         </template>
       </el-tab-pane>
     </el-tabs>
-    <el-button size="small" class="refresh-btn" @click="handleRefresh">
-      <span>刷新</span><el-icon class="el-icon--right"><Refresh /></el-icon>
-    </el-button>
-    <el-dropdown trigger="click">
-      <el-button type="primary" size="small">
-        <span>更多</span><el-icon class="el-icon--right"><ArrowDown /></el-icon>
-      </el-button>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item @click="handleCloseCurrent">关闭当前</el-dropdown-item>
-          <el-dropdown-item @click="handleCloseOther">关闭其它</el-dropdown-item>
-          <el-dropdown-item @click="handleCloseAll">关闭所有</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+    <RefreshButton />
+    <MoreButton />
   </div>
 </template>
 <script lang="ts" setup>
@@ -45,6 +31,8 @@ import { TabsPaneContext } from 'element-plus'
 import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { TabsStore } from '@/store/index'
+import RefreshButton from './components/RefreshButton.vue'
+import MoreButton from './components/MoreButton.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -85,28 +73,6 @@ const handleclickTab = (tabItem: TabsPaneContext) => {
 const handleRemoveTab = (tabPath: string) => {
   if (tabPath === '/layout/home') return
   tabsStore.removeTab(tabPath)
-}
-
-// 关闭当前 tab
-const handleCloseCurrent = () => {
-  if (tabsStore.activeTabValue === '/layout/home') return
-  tabsStore.removeTab(tabsStore.activeTabValue)
-}
-
-// 关闭其它 tab
-const handleCloseOther = () => {
-  tabsStore.closeMultipleTab(tabsStore.activeTabValue)
-}
-
-// 关闭所有 tab
-const handleCloseAll = () => {
-  tabsStore.closeMultipleTab()
-  tabsStore.goHome()
-}
-
-// 刷新页面
-const handleRefresh = () => {
-  router.push({ name: 'refresh' })
 }
 </script>
 <style lang="scss" scoped>
