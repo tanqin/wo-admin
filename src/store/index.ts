@@ -1,5 +1,5 @@
 import MenuStore from './modules/menu'
 import TabsStore from './modules/tabs'
-import LangStore from './modules/lang'
+import GlobalStore from './modules/global'
 
-export { MenuStore, TabsStore, LangStore }
+export { MenuStore, TabsStore, GlobalStore }

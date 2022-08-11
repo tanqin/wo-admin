@@ -1,6 +1,6 @@
 <template>
   <el-dropdown trigger="click">
-    <el-button type="primary" size="small">
+    <el-button type="primary">
       <span>{{ $t('tabs.more') }}</span
       ><el-icon class="el-icon--right"><ArrowDown /></el-icon>
     </el-button>

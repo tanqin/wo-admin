@@ -18,7 +18,7 @@
   </el-dropdown>
 </template>
 <script lang="ts" setup>
-import { LangStore } from '@/store'
+import { GlobalStore } from '@/store'
 import { computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -37,12 +37,12 @@ const langTypes = reactive<LangEnum[]>([
     label: 'English'
   }
 ])
-const langStore = LangStore()
-const language = computed((): string => langStore.language)
+const globalStore = GlobalStore()
+const language = computed((): string => globalStore.language)
 const { locale } = useI18n()
 
 const handleSetLang = (lang: string) => {
-  langStore.setLang(lang)
+  globalStore.setLang(lang)
   locale.value = lang
 }
 </script>

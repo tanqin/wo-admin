@@ -1,5 +1,5 @@
 <template>
-  <el-button size="small" class="refresh-btn" @click="handleRefresh">
+  <el-button class="refresh-btn" @click="handleRefresh">
     <span>{{ $t('tabs.refresh') }}</span
     ><el-icon class="el-icon--right"><Refresh /></el-icon>
   </el-button>

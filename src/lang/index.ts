@@ -5,7 +5,7 @@ import en from './en'
 const i18n = createI18n({
   allowComposition: true,
   locale:
-    JSON.parse(localStorage.getItem('LangStore') || '{}').language ||
+    JSON.parse(localStorage.getItem('GlobalStore') || '{}').language ||
     navigator.language.toLocaleLowerCase() ||
     'en',
   messages: {
