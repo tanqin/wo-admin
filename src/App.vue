@@ -4,13 +4,14 @@
   </el-config-provider>
 </template>
 <script lang="ts" setup>
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-import en from 'element-plus/dist/locale/en.mjs'
-import { computed, ref } from 'vue'
+import zhCn from 'element-plus/dist/locale/zh-cn.js'
+import en from 'element-plus/dist/locale/en.js'
+import { computed } from 'vue'
 import { GlobalStore } from './store'
+import { storeToRefs } from 'pinia'
 
 const globalStore = GlobalStore()
-const language = ref<string>(globalStore.language)
+const { language } = storeToRefs(globalStore)
 const locale = computed(() => {
   switch (language.value) {
     case 'en':

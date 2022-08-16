@@ -94,10 +94,12 @@ export default defineConfig({
       }
     },
     rollupOptions: {
+      external: ['vue', 'ElementPlus', 'vue-demi'],
       plugins: [
         externalGlobals({
           vue: 'Vue',
-          'element-plus': 'ElementPlus'
+          'element-plus': 'ElementPlus',
+          'vue-demi': 'VueDemi'
         })
       ],
       output: {
