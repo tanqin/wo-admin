@@ -7,10 +7,11 @@
     "dev": "vite",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
     "build:pro": "vue-tsc --noEmit && vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vue-tsc --noEmit && vite build --mode production && vite preview --port 8099 --open"
   },
   "dependencies": {
     "@vueuse/core": "^9.1.0",
+    "axios": "^0.27.2",
     "element-plus": "^2.2.12",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.17",
