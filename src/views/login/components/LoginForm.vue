@@ -20,6 +20,14 @@
         </template>
       </el-input>
     </el-form-item>
+    <el-form-item prop="validCode">
+      <el-input v-model="loginForm.password" type="password" placeholder="验证码">
+        <template #prefix>
+          <el-icon><Message /></el-icon>
+        </template>
+      </el-input>
+      <img class="code-img" :src="codeImgUrl" alt="验证码" />
+    </el-form-item>
     <el-form-item>
       <el-button
         type="primary"
@@ -38,6 +46,8 @@ import { reactive, ref, toRefs } from 'vue'
 import { ILoginForm } from '@/views/login/types/index'
 import { FormInstance, FormRules } from 'element-plus'
 import { Refresh, UserFilled } from '@element-plus/icons-vue'
+import { getRandom32Num } from '@/utils'
+import { getCodeImgAPI } from '@/api/modules/login'
 
 const emit = defineEmits(['login', 'reset'])
 const loginFormRef = ref<FormInstance>()
@@ -51,6 +61,20 @@ const loginRules = reactive<FormRules>({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 const btnLoading = ref<boolean>()
+const codeImgUrl = ref('')
+
+// 生成设备 id (32 位随机数)
+const deviceId = getRandom32Num()
+
+// 获取登录验证码
+const getCodeImg = async () => {
+  const res = await getCodeImgAPI(deviceId)
+  console.log(res)
+
+  const blob = res.data
+  codeImgUrl.value = window.webkitURL.createObjectURL(blob) || window.URL.createObjectURL(blob)
+}
+getCodeImg()
 
 // 登录
 const handleLogin = (loginFormEl: FormInstance | undefined) => {

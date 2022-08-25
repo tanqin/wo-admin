@@ -18,7 +18,7 @@ const router = useRouter()
 
 const config: AxiosRequestConfig = {
   // 请求 URL 的公共部分
-  baseURL: import.meta.env.VITE_API_URL as string,
+  baseURL: import.meta.env.VITE_API_BASE_URL as string,
   // 超时时间
   timeout: 10000,
   // 跨域时允许携带凭证

@@ -22,19 +22,25 @@ import { ILoginForm } from '@/views/login/types/index'
 import { reactive } from 'vue'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
+import { loginAPI } from '@/api/modules/login'
 
 const loginForm = reactive<ILoginForm>({
-  username: 'admin',
-  password: '123456'
+  username: 'chenling',
+  password: 'ylj123'
 })
 
 // 登录
-const handleLogin = (form: ILoginForm, callback: FunctionConstructor) => {
-  setTimeout(() => {
+const handleLogin = async (form: ILoginForm, callback: FunctionConstructor) => {
+  try {
+    const res = await loginAPI(form)
+    console.log(res)
     ElMessage.success(`登录成功，${form.username}，欢迎您！`)
     router.push({ name: 'home' })
-    callback('success')
-  }, 800)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    callback('finally')
+  }
 }
 </script>
 <style lang="scss" scoped>
